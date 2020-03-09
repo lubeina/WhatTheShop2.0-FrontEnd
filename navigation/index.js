@@ -1,6 +1,6 @@
 import { createAppContainer } from "react-navigation";
-import BottomTab from "./BottomTab";
+import ProfileNav from "./ProfileNav";
 
-const AppContainer = createAppContainer(BottomTab);
+const AppContainer = createAppContainer(ProfileNav);
 
 export default AppContainer;
