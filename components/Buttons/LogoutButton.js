@@ -7,7 +7,7 @@ import authStore from "../../stores/authStore";
 
 const LogoutButton = () => {
   return (
-    <Button onPress={authStore.logout} danger>
+    <Button danger onPress={authStore.logout}>
       <Text>Logout</Text>
     </Button>
   );
