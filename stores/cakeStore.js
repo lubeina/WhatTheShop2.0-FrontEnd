@@ -19,6 +19,8 @@ decorate(CakeStore, {
   cakeshops: observable,
   loading: observable
 });
+
 const cakeStore = new CakeStore();
 cakeStore.fetchAllCakeShops();
+
 export default cakeStore;
