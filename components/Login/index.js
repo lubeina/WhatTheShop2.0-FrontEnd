@@ -13,6 +13,10 @@ class Login extends Component {
     password: ""
   };
 
+  handlePress = () => {
+    authStore.login(this.state, this.props.navigation);
+  };
+
   render() {
     return (
       <Form>
@@ -31,10 +35,7 @@ class Login extends Component {
             onChangeText={password => this.setState({ password })}
           />
         </Item>
-        <Button
-          full
-          onPress={() => alert("You need to implement Login noob...")}
-        >
+        <Button full onPress={this.handlePress}>
           <Text>Login</Text>
         </Button>
       </Form>
