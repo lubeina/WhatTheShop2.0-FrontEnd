@@ -57,6 +57,7 @@ class CakeDetail extends Component {
       <Container>
         <Content>
           <Card transparent style={styles.card}>
+            {/* ----------------------  cake name ------------------------  */}
             <CardItem>
               <Left>
                 <Text style={styles.text}>
@@ -65,10 +66,20 @@ class CakeDetail extends Component {
                 </Text>
               </Left>
               <Body />
+              {/* ----------------- image cake ------------------------  */}
               <Right>
                 <Thumbnail bordered source={{ uri: cakeshop.image }} />
               </Right>
             </CardItem>
+            {/* ----------------- size cake ----------------------------------- */}
+            <CardItem>
+              <Left>
+                <Text style={styles.text}>
+                  {cakeshop.size + "\n"}
+                </Text>
+              </Left>
+              <Body />
+            {/* ---------------- change quantity --------------------------- */}
             <CardItem>
               <Body style={styles.numericInput}>
                 <NumericInput
@@ -77,7 +88,7 @@ class CakeDetail extends Component {
                   initValue={1}
                 />
               </Body>
-
+              {/* ------------------- ADD Button --------------------------- */}
               <Right>
                 <Button full style={styles.addButton} onPress={this.handleAdd}>
                   <Text>Add</Text>
