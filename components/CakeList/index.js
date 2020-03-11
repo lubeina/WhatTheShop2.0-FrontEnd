@@ -10,8 +10,8 @@ import authStore from "../../stores/authStore";
 
 // Component
 import CakeItem from "./CakeItem";
-// import CartButton from "../Buttons/CartButton";
-// import LogoutButton from "../Buttons/LogoutButton";
+import CartButton from "../Buttons/CartButton";
+import LogoutButton from "../Buttons/LogoutButton";
 
 const CakeList = () => {
   if (cakeStore.loading) return <Spinner />;
@@ -21,15 +21,14 @@ const CakeList = () => {
   return (
     <Content>
       <List>{cakeshopList}</List>
-      {/* {authStore.user}
-      && <LogoutButton /> */}
+      {authStore.user && <LogoutButton />}
     </Content>
   );
 };
 
 CakeList.navigationOptions = {
-  title: "Cake List"
-  // headerRight: <CartButton />
+  title: "Cake List",
+  headerRight: <CartButton />
 };
 
 export default observer(CakeList);

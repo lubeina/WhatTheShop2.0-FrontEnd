@@ -21,8 +21,8 @@ import {
 // Style
 import styles from "./styles";
 
-// Components
-// import CartButton from "../Buttons/CartButton";
+// Components;
+import CartButton from "../Buttons/CartButton";
 
 // Stores
 import cakeStore from "../../stores/cakeStore";
@@ -52,7 +52,7 @@ class CakeDetail extends Component {
     const cakeshop = cakeStore.cakeshops.find(
       cakeshop => cakeshopID === cakeshop.id
     );
-    console.log("cakeshop", cakeshop);
+
     return (
       <Container>
         <Content>
@@ -92,8 +92,8 @@ class CakeDetail extends Component {
 }
 
 CakeDetail.navigationOptions = ({ navigation }) => ({
-  title: navigation.getParam("cakeshopName")
-  // headerRight: <CartButton />
+  title: navigation.getParam("cakeshopName"),
+  headerRight: <CartButton />
 });
 
 export default CakeDetail;
