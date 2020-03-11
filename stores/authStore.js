@@ -21,13 +21,14 @@ class AuthStore {
     }
   };
 
-  login = async userData => {
+  login = async (userData, navigation) => {
     try {
-      const res = await instance.post("/api/login/", userData);
+      const res = await instance.post("api/login/", userData);
       const user = res.data;
       this.setUser(user.access);
+      navigation.navigate("List");
     } catch (err) {
-      console.log("something went wrong logging in");
+      console.log("something went wrong logging in", userData);
     }
   };
 

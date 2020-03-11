@@ -16,7 +16,7 @@ const ProfileStack = createStackNavigator(
     Detail: DetailScreen
   },
   {
-    initialRouteName: "List",
+    initialRouteName: "Login",
     defaultNavigationOptions: {
       title: "WhatTheShop"
     }

@@ -6,7 +6,7 @@ class CakeStore {
   loading = true;
   fetchAllCakeShops = async () => {
     try {
-      const res = await instance.get("?format=json");
+      const res = await instance.get("cakes/");
       const cakeshops = res.data;
       this.cakeshops = cakeshops;
       this.loading = false;
