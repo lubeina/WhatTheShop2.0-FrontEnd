@@ -1,6 +1,6 @@
 import { createAppContainer } from "react-navigation";
-import ProfileNav from "./ProfileNav";
+import SwitchNav from "./SwitchNav";
 
-const AppContainer = createAppContainer(ProfileNav);
+const AppContainer = createAppContainer(SwitchNav);
 
 export default AppContainer;
