@@ -12,7 +12,7 @@ import cartStore from "../../stores/cartStore";
 
 const CakeCart = () => {
   const cartItems = cartStore.items.map(item => (
-    <CartItem item={item} key={`${item.drink} ${item.option}`} />
+    <CartItem item={item} key={`${item.name} ${item.quantity}`} />
   ));
 
   return (
