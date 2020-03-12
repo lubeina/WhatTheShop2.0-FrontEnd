@@ -4,9 +4,7 @@ class CartStore {
   items = [];
 
   addItemToCart = item => {
-    const itemExist = this.items.find(
-      _item => _item.drink === item.drink && _item.option === item.option
-    );
+    const itemExist = this.items.find(_item => _item.name === item.name);
     if (itemExist) itemExist.quantity += item.quantity;
     else this.items.push(item);
   };
