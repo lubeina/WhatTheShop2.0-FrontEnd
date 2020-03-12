@@ -8,7 +8,7 @@ import cartStore from "../../stores/cartStore";
 import authStore from "../../stores/authStore";
 
 const CartButton = ({ navigation }) => {
-  const handlePress = () => navigation.navigate("CartScreen");
+  const handlePress = () => navigation.navigate("Cart");
   const handleLogin = () => navigation.navigate("Login");
   return authStore.user ? (
     <Button onPress={handlePress} transparent dark>

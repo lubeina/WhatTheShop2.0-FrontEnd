@@ -10,8 +10,7 @@ const CartItem = ({ item }) => {
   return (
     <ListItem>
       <Left>
-        <Text> {item.drink} </Text>
-        <Text note>{item.option}</Text>
+        <Text> {item.name} </Text>
       </Left>
       <Body>
         <Text>{item.quantity}</Text>
