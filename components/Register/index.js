@@ -29,6 +29,24 @@ class Register extends Component {
         />
         <TextInput
           style={styles.authTextInput}
+          placeholder="First name"
+          placeholderTextColor="#A6AEC1"
+          onChangeText={value => this.setState({ first_name: value })}
+        />
+        <TextInput
+          style={styles.authTextInput}
+          placeholder="Last name"
+          placeholderTextColor="#A6AEC1"
+          onChangeText={value => this.setState({ last_name: value })}
+        />
+        <TextInput
+          style={styles.authTextInput}
+          placeholder="email"
+          placeholderTextColor="#A6AEC1"
+          onChangeText={value => this.setState({ email: value })}
+        />
+        <TextInput
+          style={styles.authTextInput}
           placeholder="Password"
           placeholderTextColor="#A6AEC1"
           secureTextEntry={true}
