@@ -12,6 +12,7 @@ import authStore from "../../stores/authStore";
 import CakeItem from "./CakeItem";
 import CartButton from "../Buttons/CartButton";
 import LogoutButton from "../Buttons/LogoutButton";
+import ProfileButton from "../Buttons/ProfileButton";
 
 const CakeList = () => {
   if (cakeStore.loading) return <Spinner />;
@@ -28,7 +29,8 @@ const CakeList = () => {
 
 CakeList.navigationOptions = {
   title: "Cake List",
-  headerRight: <CartButton />
+  headerRight: <CartButton />,
+  headerLeft: <ProfileButton />
 };
 
 export default observer(CakeList);
