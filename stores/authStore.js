@@ -38,14 +38,14 @@ class AuthStore {
       const user = res.data;
       await this.setUser(user.access);
       navigation.navigate("List");
-      console.log(authStore.user);
     } catch (err) {
       console.log("something went wrong logging in", userData);
     }
   };
 
-  logout = async () => {
+  logout = async navigation => {
     await this.setUser();
+    navigation.navigate("List");
   };
 
   checkForToken = async () => {

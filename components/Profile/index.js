@@ -2,14 +2,12 @@ import React from "react";
 import styles from "./styles";
 
 // NativeBase Components
-import { Image, Text, View, TouchableOpacity } from "react-native";
+import { Image, Text, View } from "react-native";
+import { Button } from "native-base";
 import authStore from "../../stores/authStore";
-import LogoutButton from "../Buttons/LogoutButton";
-import { withNavigation } from "react-navigation";
 import { observer } from "mobx-react";
 
-const Profile = () => {
-  // console.log(authStore.userData);
+const Profile = ({ navigation }) => {
   return (
     <View style={styles.authContainer}>
       <Text style={styles.authTitle}>{authStore.user.username}'s Profile</Text>
@@ -18,8 +16,10 @@ const Profile = () => {
         Name: {authStore.user.first_name} {authStore.user.last_name}
       </Text>
       <Text> Email: {authStore.user.email}</Text>
-      <LogoutButton onPress={() => this.props.navigation.navigate("List")} />
+      <Button danger onPress={() => authStore.logout(navigation)}>
+        <Text>Logout</Text>
+      </Button>
     </View>
   );
 };
-export default withNavigation(observer(Profile));
+export default observer(Profile);

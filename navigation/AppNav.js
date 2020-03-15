@@ -6,7 +6,7 @@ import CartScreen from "../components/CakeCart";
 import DetailScreen from "../components/CakeDetail";
 import ListScreen from "../components/CakeList";
 
-const ProfileStack = createStackNavigator(
+const AppNav = createStackNavigator(
   {
     Profile: ProfileScreen,
     Cart: CartScreen,
@@ -21,4 +21,4 @@ const ProfileStack = createStackNavigator(
   }
 );
 
-export default ProfileStack;
+export default AppNav;
