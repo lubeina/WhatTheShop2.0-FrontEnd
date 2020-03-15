@@ -1,15 +1,15 @@
 import { createSwitchNavigator } from "react-navigation";
 
-import LoginStack from "./LoginNav";
-import ProfileStack from "./ProfileNav";
+import AuthStack from "./AuthNav";
+import AppStack from "./AppNav";
 
 const SwitchNav = createSwitchNavigator(
   {
-    LoginNav: LoginStack,
-    ProfileStack: ProfileStack
+    AuthNav: AuthStack,
+    AppNav: AppStack
   },
   {
-    initialRouteName: "LoginNav",
+    initialRouteName: "AuthNav",
     defaultNavigationOptions: {
       title: "Sweet Spot"
     }
