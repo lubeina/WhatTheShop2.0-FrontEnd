@@ -31,21 +31,22 @@ import authStore from "../../stores/authStore";
 
 class CakeDetail extends Component {
   state = {
+    cake: this.props.navigation.getParam("cakeshopID"),
     quantity: 1
   };
 
   changeQuantity = value => this.setState({ quantity: value });
 
-  // handleAdd = () => {
-  //   authStore.user
-  //     ? cartStore.addItemToCart(this.state)
-  //     : Alert.alert("Stop", "Do you wish to Login?", [
-  //         {
-  //           text: "Yes",
-  //           onPress: () => this.props.navigation.navigate("Login")
-  //         }
-  //       ]);
-  // };
+  handleAdd = () => {
+    authStore.user
+      ? cartStore.addItemToCart(this.state)
+      : Alert.alert("Stop", "Do you wish to Login?", [
+          {
+            text: "Yes",
+            onPress: () => this.props.navigation.navigate("Login")
+          }
+        ]);
+  };
 
   render() {
     const cakeshopID = this.props.navigation.getParam("cakeshopID", 1);
