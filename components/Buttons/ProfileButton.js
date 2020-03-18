@@ -8,22 +8,23 @@ import authStore from "../../stores/authStore";
 
 const ProfileButton = ({ navigation }) => {
   const handleProfile = () => navigation.navigate("Profile");
+
   const handleSignup = () => navigation.navigate("Register");
   return authStore.user ? (
-    <Button transparent dark>
+    <Button transparent>
       <Icon
         name="user"
         type="AntDesign"
-        style={{ color: "white" }}
+        style={{ color: "black" }}
         onPress={handleProfile}
       />
     </Button>
   ) : (
-    <Button transparent dark>
+    <Button transparent>
       <Icon
         name="adduser"
         type="AntDesign"
-        style={{ color: "white" }}
+        style={{ color: "black" }}
         onPress={handleSignup}
       />
     </Button>
