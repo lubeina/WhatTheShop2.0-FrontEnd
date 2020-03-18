@@ -10,7 +10,7 @@ const CartItem = ({ item }) => {
   return (
     <ListItem>
       <Left>
-        <Text> {item.name} </Text>
+        <Text> {item.cake} </Text>
       </Left>
       <Body>
         <Text>{item.quantity}</Text>

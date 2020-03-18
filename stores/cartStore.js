@@ -1,12 +1,14 @@
 import { computed, decorate, observable } from "mobx";
+import { instance } from "./instance";
 
 class CartStore {
   items = [];
 
   addItemToCart = item => {
-    const itemExist = this.items.find(_item => _item.name === item.name);
+    const itemExist = this.items.find(_item => _item.cake === item.cake);
     if (itemExist) itemExist.quantity += item.quantity;
     else this.items.push(item);
+    instance.post("cart/item/", item);
   };
 
   removeItemFromCart = item => {
