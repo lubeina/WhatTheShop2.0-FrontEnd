@@ -17,11 +17,15 @@ class CartStore {
     }
   };
 
-  addItemToCart = item => {
-    const itemExist = this.items.find(_item => _item.cake === item.cake);
-    if (itemExist) itemExist.quantity += item.quantity;
-    else this.items.push(item);
-    instance.post("cart/item/", item);
+  addItemToCart = async (item, name) => {
+    const itemExist = this.items.find(_item => _item.cake === name);
+    if (itemExist) {
+      itemExist.quantity += item.quantity;
+      itemExist.item_price += item.item_price;
+    } else {
+      const res = await instance.post("cart/item/", item);
+      this.items.push(res.data);
+    }
   };
 
   removeItemFromCart = item => {

@@ -2,7 +2,7 @@ import React from "react";
 import { observer } from "mobx-react";
 
 // NativeBase Components
-import { Text, List, Button } from "native-base";
+import { Text, List, Button, Spinner } from "native-base";
 
 // Component
 import CartItem from "./CartItem";
@@ -11,10 +11,10 @@ import CartItem from "./CartItem";
 import cartStore from "../../stores/cartStore";
 
 const CakeCart = () => {
+  if (cartStore.loading) return <Spinner />;
   const cartItems = cartStore.items.map(item => (
-    <CartItem item={item} key={`${item.cake} ${item.quantity}`} />
+    <CartItem item={item} key={item.id} />
   ));
-
   return (
     <List>
       {cartItems}

@@ -15,7 +15,8 @@ import {
   Left,
   Picker,
   Right,
-  Text
+  Text,
+  Spinner
 } from "native-base";
 
 // Style
@@ -39,7 +40,10 @@ class CakeDetail extends Component {
 
   handleAdd = () => {
     authStore.user
-      ? cartStore.addItemToCart(this.state)
+      ? cartStore.addItemToCart(
+          this.state,
+          this.props.navigation.getParam("cakeshopName")
+        )
       : Alert.alert("Stop", "Do you wish to Login?", [
           {
             text: "Yes",
@@ -53,7 +57,7 @@ class CakeDetail extends Component {
     const cakeshop = cakeStore.cakeshops.find(
       cakeshop => cakeshopID === cakeshop.id
     );
-
+    if (cakeStore.loading) return <Spinner />;
     return (
       <Container>
         <Content>

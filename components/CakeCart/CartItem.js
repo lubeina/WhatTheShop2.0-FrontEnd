@@ -1,4 +1,5 @@
 import React from "react";
+import { observer } from "mobx-react";
 
 // NativeBase Components
 import { Text, Left, Body, Right, Button, ListItem, Icon } from "native-base";
@@ -14,10 +15,13 @@ const CartItem = ({ item }) => {
   return (
     <ListItem style={styles.listStyle}>
       <Left>
-        <Text style={styles.cake}> {item.cake} </Text>
+        <Text style={styles.cake}>
+          {" "}
+          {item.cake} - {item.quantity}{" "}
+        </Text>
       </Left>
       <Body>
-        <Text style={styles.quantity}>{item.quantity}</Text>
+        <Text style={styles.quantity}>KD {item.item_price}.000</Text>
       </Body>
       <Right>
         <Button transparent onPress={() => cartStore.removeItemFromCart(item)}>
