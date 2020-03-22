@@ -5,6 +5,7 @@ import { instance } from "./instance";
 
 class AuthStore {
   user = null;
+  loading = true;
 
   setUser = async token => {
     if (token) {
@@ -58,18 +59,19 @@ class AuthStore {
       // Check token expiration
       if (user.exp >= currentTime) {
         // Set auth token header
-        this.setUser(token);
+        await this.setUser(token);
       } else {
-        this.setUser();
+        await this.setUser();
       }
     }
+    this.loading = false;
   };
 }
 
 decorate(AuthStore, {
-  user: observable
+  user: observable,
+  loading: observable
 });
 
 const authStore = new AuthStore();
-authStore.checkForToken();
 export default authStore;
