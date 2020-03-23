@@ -57,8 +57,11 @@ class CartStore {
 
 decorate(CartStore, {
   items: observable,
+  cart: observable,
+  loading: observable,
   quantity: computed
 });
 
 const cartStore = new CartStore();
+cartStore.fetchCartData();
 export default cartStore;

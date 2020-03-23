@@ -1,13 +1,20 @@
 import React, { Component } from "react";
-import styles from "./styles";
 
 // NativeBase Components
-import { Image, Text, View } from "react-native";
-import { Button, Spinner } from "native-base";
+import {
+  Spinner,
+  CardItem,
+  Container,
+  Text,
+  Header,
+  Card,
+  Content
+} from "native-base";
 import authStore from "../../stores/authStore";
 import profileStore from "../../stores/profileStore";
 import { observer } from "mobx-react";
 import LogoutButton from "../Buttons/LogoutButton";
+import OrderCard from "./OrderCard";
 
 class Profile extends Component {
   componentDidMount() {
@@ -15,20 +22,33 @@ class Profile extends Component {
   }
   render() {
     if (profileStore.loading) return <Spinner />;
+    const orders = profileStore.profile.past_items
+      .map(past_item => <OrderCard past_item={past_item} key={past_item.id} />)
+      .reverse();
     return (
-      <View style={styles.authContainer}>
-        <Text style={styles.authTitle}>
-          {profileStore.profile.username}'s Profile
-        </Text>
-        <Text style={styles.profiletext}>
-          Name: {profileStore.profile.first_name}{" "}
-          {profileStore.profile.last_name}
-        </Text>
-        <Text style={styles.profiletext}>
-          Email: {profileStore.profile.email}
-        </Text>
+      <Container>
+        <Header transparent>
+          <Text>{profileStore.profile.username}'s Profile</Text>
+        </Header>
+        <Content>
+          <Card>
+            <CardItem>
+              <Text>
+                Name: {profileStore.profile.first_name}{" "}
+                {profileStore.profile.last_name}
+              </Text>
+            </CardItem>
+            <CardItem>
+              <Text>Email: {profileStore.profile.email}</Text>
+            </CardItem>
+          </Card>
+        </Content>
+        <Header transparent>
+          <Text>Order History</Text>
+        </Header>
+        <Content>{orders}</Content>
         <LogoutButton />
-      </View>
+      </Container>
     );
   }
 }
