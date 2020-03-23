@@ -1,22 +1,24 @@
 import { createStackNavigator } from "react-navigation-stack";
 
 // Components
-import ProfileScreen from "../components/Profile";
-import CartScreen from "../components/CakeCart";
-import DetailScreen from "../components/CakeDetail";
-import ListScreen from "../components/CakeList";
+import Profile from "../components/Profile/Profile";
+import Cart from "../components/CakeCart";
+import Detail from "../components/CakeDetail";
+import List from "../components/CakeList";
+import OrderDetails from "../components/Profile/OrderDetails";
 
 const AppNav = createStackNavigator(
   {
-    Profile: ProfileScreen,
-    Cart: CartScreen,
-    List: ListScreen,
-    Detail: DetailScreen
+    Profile: Profile,
+    Cart: Cart,
+    List: List,
+    Detail: Detail,
+    OrderDetail: OrderDetails
   },
   {
     initialRouteName: "List",
     defaultNavigationOptions: {
-      title: "WhatTheShop"
+      title: "Sweet Spot"
     }
   }
 );

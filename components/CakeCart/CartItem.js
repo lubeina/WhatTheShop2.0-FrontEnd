@@ -1,27 +1,35 @@
 import React from "react";
+import { observer } from "mobx-react";
 
 // NativeBase Components
 import { Text, Left, Body, Right, Button, ListItem, Icon } from "native-base";
 
 // Style
+import styles from "./styles";
+
+//Store
 import cartStore from "../../stores/cartStore";
+import { observer } from "mobx-react";
 
 const CartItem = ({ item }) => {
   return (
-    <ListItem>
+    <ListItem style={styles.listStyle}>
       <Left>
-        <Text> {item.cake} </Text>
+        <Text style={styles.cake}>
+          {" "}
+          {item.cake} - {item.quantity}{" "}
+        </Text>
       </Left>
       <Body>
-        <Text>{item.quantity}</Text>
+        <Text style={styles.quantity}>KD {item.item_price}.000</Text>
       </Body>
       <Right>
         <Button transparent onPress={() => cartStore.removeItemFromCart(item)}>
-          <Icon name="trash" />
+          <Icon name="trash" style={styles.removeItem} />
         </Button>
       </Right>
     </ListItem>
   );
 };
 
-export default CartItem;
+export default observer(CartItem);

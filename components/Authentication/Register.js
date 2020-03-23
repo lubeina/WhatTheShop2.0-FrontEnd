@@ -5,6 +5,7 @@ import { observer } from "mobx-react";
 // Styling Components
 import { TextInput, TouchableOpacity, View } from "react-native";
 import { Text } from "native-base";
+import { Spinner } from "native-base";
 import styles from "./styles";
 
 class Register extends Component {
@@ -18,6 +19,7 @@ class Register extends Component {
   };
 
   render() {
+    if (authStore.loading) return <Spinner />;
     return (
       <View style={styles.authContainer}>
         <Text style={styles.authTitle}>Signup</Text>

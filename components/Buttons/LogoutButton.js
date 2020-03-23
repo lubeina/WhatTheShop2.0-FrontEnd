@@ -4,13 +4,14 @@ import { observer } from "mobx-react";
 
 // Stores
 import authStore from "../../stores/authStore";
+import { withNavigation } from "react-navigation";
 
-const LogoutButton = () => {
+const LogoutButton = ({ navigation }) => {
   return (
-    <Button danger onPress={authStore.logout}>
+    <Button danger onPress={() => authStore.logout(navigation)}>
       <Text>Logout</Text>
     </Button>
   );
 };
 
-export default observer(LogoutButton);
+export default withNavigation(observer(LogoutButton));

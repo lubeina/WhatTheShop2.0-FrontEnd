@@ -3,7 +3,8 @@ import { observer } from "mobx-react";
 import styles from "./styles";
 
 // NativeBase Components
-import { Image, TextInput, TouchableOpacity, View } from "react-native";
+import { TextInput, TouchableOpacity, View } from "react-native";
+import { Spinner } from "native-base";
 
 import { Text } from "native-base";
 
@@ -20,7 +21,13 @@ class Login extends Component {
     authStore.login(this.state, this.props.navigation);
   };
 
+  async componentDidMount() {
+    await authStore.checkForToken();
+    if (authStore.user) this.props.navigation.navigate("List");
+  }
+
   render() {
+    if (authStore.loading) return <Spinner />;
     return (
       <View style={styles.authContainer}>
         <Text style={styles.authTitle}>Login</Text>

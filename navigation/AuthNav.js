@@ -1,12 +1,12 @@
 import { createStackNavigator } from "react-navigation-stack";
 
-import LoginScreen from "../components/Authentication/Login";
-import RegisterScreen from "../components/Authentication/Register";
+import Login from "../components/Authentication/Login";
+import Register from "../components/Authentication/Register";
 
 const AuthNav = createStackNavigator(
   {
-    Login: LoginScreen,
-    Register: RegisterScreen
+    Login: Login,
+    Register: Register
   },
   {
     initialRouteName: "Login",

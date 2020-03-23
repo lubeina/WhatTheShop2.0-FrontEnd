@@ -12,7 +12,8 @@ const CakeItem = ({ cakeshop, navigation }) => {
   const handlePress = () =>
     navigation.navigate("Detail", {
       cakeshopID: cakeshop.id,
-      cakeshopName: cakeshop.name
+      cakeshopName: cakeshop.name,
+      cakeshopPrice: cakeshop.price
     });
 
   return (

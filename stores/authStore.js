@@ -2,10 +2,11 @@ import { decorate, observable } from "mobx";
 import { AsyncStorage } from "react-native";
 import jwt_decode from "jwt-decode";
 import { instance } from "./instance";
-import { withNavigation } from "react-navigation";
+import cartStore from "./cartStore";
 
 class AuthStore {
   user = null;
+  loading = true;
 
   setUser = async token => {
     if (token) {
@@ -15,6 +16,7 @@ class AuthStore {
       instance.defaults.headers.common.Authorization = `Bearer ${token}`;
       // Set current user
       this.user = jwt_decode(token);
+      cartStore.fetchAllCartItems();
     } else {
       await AsyncStorage.removeItem("myToken");
       delete instance.defaults.headers.common.Authorization;
@@ -59,18 +61,19 @@ class AuthStore {
       // Check token expiration
       if (user.exp >= currentTime) {
         // Set auth token header
-        this.setUser(token);
+        await this.setUser(token);
       } else {
-        this.setUser();
+        await this.setUser();
       }
     }
+    this.loading = false;
   };
 }
 
 decorate(AuthStore, {
-  user: observable
+  user: observable,
+  loading: observable
 });
 
 const authStore = new AuthStore();
-authStore.checkForToken();
-export default withNavigation(authStore);
+export default authStore;

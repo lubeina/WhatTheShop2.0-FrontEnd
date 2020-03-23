@@ -7,25 +7,28 @@ import { Icon, Text, Button } from "native-base";
 import cartStore from "../../stores/cartStore";
 import authStore from "../../stores/authStore";
 
-const CartButton = ({ navigation }) => {
-  const handlePress = () => navigation.navigate("Cart");
+const CartButton = ({ navigation, item }) => {
+  const handlePress = () => {
+    navigation.navigate("Cart");
+    console.log("Item", item.cake);
+  };
   const handleLogin = () => navigation.navigate("Login");
   return authStore.user ? (
-    <Button onPress={handlePress} transparent dark>
-      <Text style={{ color: "white" }}>{cartStore.quantity}</Text>
+    <Button onPress={handlePress} transparent>
+      <Text style={{ color: "black" }}>{cartStore.quantity}</Text>
       <Icon
         name="shoppingcart"
         type="AntDesign"
-        style={{ color: "white" }}
+        style={{ color: "black" }}
         onPress={handlePress}
       />
     </Button>
   ) : (
-    <Button onPress={handleLogin} transparent dark>
+    <Button onPress={handleLogin} transparent>
       <Icon
         name="login"
         type="AntDesign"
-        style={{ color: "white" }}
+        style={{ color: "black" }}
         onPress={handleLogin}
       />
     </Button>
