@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import NumericInput from "react-native-numeric-input";
 
 // NativeBase Components
-import { Alert } from "react-native";
+import { Alert, Image } from "react-native";
 import {
   Body,
   Button,
@@ -16,7 +16,8 @@ import {
   Picker,
   Right,
   Text,
-  Spinner
+  Spinner,
+  Header
 } from "native-base";
 
 // Style
@@ -62,33 +63,40 @@ class CakeDetail extends Component {
     return (
       <Container>
         <Content>
-          <Card transparent style={styles.card}>
+          <Card style={{ flex: 0 }}>
             <CardItem>
               <Left>
-                <Text style={styles.text}>
-                  {cakeshop.name + "\n"}
-                  <Text note>{cakeshop.flavor}</Text>
-                </Text>
+                <Thumbnail bordered source={{ uri: cakeshop.image }} />
+                <Body>
+                  <Text style={styles.text}>
+                    {cakeshop.name + "\n"}
+                    <Text note>{cakeshop.flavor}</Text>
+                  </Text>
+                </Body>
               </Left>
               <Body />
-              <Right>
-                <Thumbnail bordered source={{ uri: cakeshop.image }} />
-              </Right>
             </CardItem>
             <CardItem>
-              <Body style={styles.numericInput}>
-                <NumericInput
-                  value={this.state.value}
-                  onChange={this.changeQuantity}
-                  initValue={1}
+              <Body>
+                <Image
+                  source={{ uri: cakeshop.image }}
+                  style={{ height: 300, width: 380, flex: 1 }}
                 />
               </Body>
-
-              <Right>
+            </CardItem>
+            <CardItem>
+              <Left>
+                <Body style={styles.numericInput}>
+                  <NumericInput
+                    value={this.state.value}
+                    onChange={this.changeQuantity}
+                    initValue={1}
+                  />
+                </Body>
                 <Button full style={styles.addButton} onPress={this.handleAdd}>
                   <Text>Add</Text>
                 </Button>
-              </Right>
+              </Left>
             </CardItem>
           </Card>
         </Content>

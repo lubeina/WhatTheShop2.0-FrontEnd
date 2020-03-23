@@ -22,7 +22,6 @@ const CakeList = () => {
   return (
     <Content>
       <List>{cakeshopList}</List>
-      {authStore.user && <LogoutButton />}
     </Content>
   );
 };
