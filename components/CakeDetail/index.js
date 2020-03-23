@@ -36,16 +36,16 @@ class CakeDetail extends Component {
 
   changeQuantity = value => this.setState({ quantity: value });
 
-  // handleAdd = () => {
-  //   authStore.user
-  //     ? cartStore.addItemToCart(this.state)
-  //     : Alert.alert("Stop", "Do you wish to Login?", [
-  //         {
-  //           text: "Yes",
-  //           onPress: () => this.props.navigation.navigate("Login")
-  //         }
-  //       ]);
-  // };
+  handleAdd = () => {
+    authStore.user
+      ? cartStore.addItemToCart(this.state)
+      : Alert.alert("Stop", "Do you wish to Login?", [
+          {
+            text: "Yes",
+            onPress: () => this.props.navigation.navigate("Login")
+          }
+        ]);
+  };
 
   render() {
     const cakeshopID = this.props.navigation.getParam("cakeshopID", 1);
@@ -71,21 +71,61 @@ class CakeDetail extends Component {
                 <Thumbnail bordered source={{ uri: cakeshop.image }} />
               </Right>
             </CardItem>
+
+            {/* ----------------- Description cake ----------------------------------- */}
+            <CardItem>
+              <Left>
+                <Text style={styles.text}>Description: </Text>
+              </Left>
+              <Body />
+            </CardItem>
+
+            {/* ----------------- information cake ----------------------------------- */}
+            {/* <CardItem>
+              <Left>
+                <Text style={styles.text}>
+                  Information: {cakeshop.size + "\n"}
+                </Text>
+              </Left>
+              <Body />
+            </CardItem> */}
+
             {/* ----------------- size cake ----------------------------------- */}
             <CardItem>
               <Left>
                 <Text style={styles.text}>
-                  {cakeshop.size + "\n"}
+                  Size & Serves: {cakeshop.size + "\n"}
                 </Text>
               </Left>
               <Body />
+            </CardItem>
+
+            {/* ----------------- price cake ----------------------------------- */}
+            <CardItem>
+              <Left>
+                <Text style={styles.text}>Price: {cakeshop.price} KD</Text>
+              </Left>
+              <Body />
+            </CardItem>
+
+            {/* ----------------- delivery info   ----------------------------------- */}
+            <CardItem>
+              <Left>
+                <Text style={styles.text}>
+                  Delivery info : order before, Requires 3 hrs{" "}
+                </Text>
+              </Left>
+              <Body />
+            </CardItem>
+
             {/* ---------------- change quantity --------------------------- */}
             <CardItem>
               <Body style={styles.numericInput}>
                 <NumericInput
-                  value={this.state.value}
+                  value={gitthis.state.value}
                   onChange={this.changeQuantity}
                   initValue={1}
+                  minValue="1"
                 />
               </Body>
               {/* ------------------- ADD Button --------------------------- */}

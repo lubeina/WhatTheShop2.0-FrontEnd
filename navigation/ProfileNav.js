@@ -6,6 +6,7 @@ import LoginScreen from "../components/Login";
 import CartScreen from "../components/CakeCart";
 import DetailScreen from "../components/CakeDetail";
 import ListScreen from "../components/CakeList";
+// import Checkout from "../components/Checkout";
 
 const ProfileStack = createStackNavigator(
   {
@@ -14,6 +15,7 @@ const ProfileStack = createStackNavigator(
     Cart: CartScreen,
     List: ListScreen,
     Detail: DetailScreen
+    // Checkout: Checkout
   },
   {
     initialRouteName: "List",

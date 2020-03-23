@@ -28,9 +28,9 @@ const CakeItem = ({ cakeshop, navigation }) => {
                 style={styles.thumbnail}
               />
               <Text style={styles.text}>{cakeshop.name}</Text>
-              <Text note style={styles.text}>
-                {cakeshop.price}
-              </Text>
+              {/* <Text note style={styles.text}>
+                {cakeshop.flavor}
+              </Text> */}
             </Left>
           </CardItem>
         </Card>
