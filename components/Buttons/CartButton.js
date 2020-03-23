@@ -10,7 +10,6 @@ import authStore from "../../stores/authStore";
 const CartButton = ({ navigation, item }) => {
   const handlePress = () => {
     navigation.navigate("Cart");
-    console.log("Item", item.cake);
   };
   const handleLogin = () => navigation.navigate("Login");
   return authStore.user ? (

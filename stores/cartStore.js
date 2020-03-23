@@ -63,5 +63,4 @@ decorate(CartStore, {
 });
 
 const cartStore = new CartStore();
-cartStore.fetchCartData();
 export default cartStore;

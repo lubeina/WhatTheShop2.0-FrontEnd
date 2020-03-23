@@ -9,7 +9,6 @@ import styles from "./styles";
 
 //Store
 import cartStore from "../../stores/cartStore";
-import { observer } from "mobx-react";
 
 const CartItem = ({ item }) => {
   return (
