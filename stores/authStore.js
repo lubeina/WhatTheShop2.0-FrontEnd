@@ -2,6 +2,7 @@ import { decorate, observable } from "mobx";
 import { AsyncStorage } from "react-native";
 import jwt_decode from "jwt-decode";
 import { instance } from "./instance";
+import cartStore from "./cartStore";
 
 class AuthStore {
   user = null;
@@ -15,6 +16,7 @@ class AuthStore {
       instance.defaults.headers.common.Authorization = `Bearer ${token}`;
       // Set current user
       this.user = jwt_decode(token);
+      cartStore.fetchAllCartItems();
     } else {
       await AsyncStorage.removeItem("myToken");
       delete instance.defaults.headers.common.Authorization;

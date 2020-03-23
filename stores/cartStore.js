@@ -3,49 +3,49 @@ import { instance } from "./instance";
 
 class CartStore {
   items = [];
-  cart = [];
   loading = true;
 
-  fetchCartData = async () => {
+  fetchAllCartItems = async () => {
     try {
       const res = await instance.get("cart/");
-      const cart = res.data;
-      this.cart = cart;
+      const cart_item = res.data.cart_item;
+      this.items = cart_item;
       this.loading = false;
     } catch (err) {
-      console.log("something went wrong fetching the cart data");
+      console.error(err);
     }
   };
 
-  addItemToCart = async (item, name) => {
+  addItemToCart = async (item, name, price) => {
     const itemExist = this.items.find(_item => _item.cake === name);
     if (itemExist) {
       itemExist.quantity += item.quantity;
-      itemExist.item_price += item.item_price;
+      try {
+        await instance.put(`cart/${itemExist.id}/update/`, {
+          quantity: itemExist.quantity
+        });
+      } catch (err) {
+        console.log("something went wrong");
+      }
+      itemExist.item_price = itemExist.quantity * price;
     } else {
       const res = await instance.post("cart/item/", item);
       this.items.push(res.data);
     }
   };
 
-  removeItemFromCart = item => {
-    //   this.items = this.items.filter(_item => _item !== item);
-    // };
-    const itemExist = this.items.find(
-      _item => _item.drink === item.drink && _item.option === item.option
-    );
-    if (itemExist) {
-      if (item.quantity <= 1) {
-        this.items = this.items.filter(_item => _item != item);
-      } else {
-        itemExist.quantity -= 1;
-      }
+  removeItemFromCart = async item => {
+    try {
+      await instance.delete(`cart/${item.id}/delete/`);
+    } catch (err) {
+      console.log("something went wrong");
     }
+    this.items = this.items.filter(_item => _item !== item);
   };
 
   checkoutCart = () => {
     this.items = [];
-    alert("Thank you for shopping with us!");
+    alert("Thank you for Shopping with us!");
   };
 
   get quantity() {
