@@ -42,7 +42,8 @@ class CakeDetail extends Component {
     authStore.user
       ? cartStore.addItemToCart(
           this.state,
-          this.props.navigation.getParam("cakeshopName")
+          this.props.navigation.getParam("cakeshopName"),
+          this.props.navigation.getParam("cakeshopPrice")
         )
       : Alert.alert("Stop", "Do you wish to Login?", [
           {
