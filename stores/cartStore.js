@@ -3,25 +3,49 @@ import { instance } from "./instance";
 
 class CartStore {
   items = [];
+  loading = true;
 
-  addItemToCart = async (item, name) => {
+  fetchAllCartItems = async () => {
+    try {
+      const res = await instance.get("cart/");
+      const cart_item = res.data.cart_item;
+      this.items = cart_item;
+      this.loading = false;
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  addItemToCart = async (item, name, price) => {
     const itemExist = this.items.find(_item => _item.cake === name);
     if (itemExist) {
       itemExist.quantity += item.quantity;
-      itemExist.item_price += item.item_price;
+      try {
+        await instance.put(`cart/${itemExist.id}/update/`, {
+          quantity: itemExist.quantity
+        });
+      } catch (err) {
+        console.log("something went wrong");
+      }
+      itemExist.item_price = itemExist.quantity * price;
     } else {
       const res = await instance.post("cart/item/", item);
       this.items.push(res.data);
     }
   };
 
-  removeItemFromCart = item => {
+  removeItemFromCart = async item => {
+    try {
+      await instance.delete(`cart/${item.id}/delete/`);
+    } catch (err) {
+      console.log("something went wrong");
+    }
     this.items = this.items.filter(_item => _item !== item);
   };
 
   checkoutCart = () => {
     this.items = [];
-    alert("I'm a cute message");
+    alert("Thank you for Shopping with us!");
   };
 
   get quantity() {
