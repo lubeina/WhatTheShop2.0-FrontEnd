@@ -14,11 +14,11 @@ const CartButton = ({ navigation, item }) => {
   const handleLogin = () => navigation.navigate("Login");
   return authStore.user ? (
     <Button onPress={handlePress} transparent>
-      <Text style={{ color: "black" }}>{cartStore.quantity}</Text>
+      <Text style={{ color: "maroon" }}>{cartStore.quantity}</Text>
       <Icon
         name="shoppingcart"
         type="AntDesign"
-        style={{ color: "black" }}
+        style={{ color: "maroon" }}
         onPress={handlePress}
       />
     </Button>
@@ -27,7 +27,7 @@ const CartButton = ({ navigation, item }) => {
       <Icon
         name="login"
         type="AntDesign"
-        style={{ color: "black" }}
+        style={{ color: "maroon" }}
         onPress={handleLogin}
       />
     </Button>

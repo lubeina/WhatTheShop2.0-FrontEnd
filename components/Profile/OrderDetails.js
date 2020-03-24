@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import { Text, Header, Container, Content, CardItem, Card } from "native-base";
 import profileStore from "../../stores/profileStore";
 import OrderItem from "./OrderItem";
+import styles from "./styles";
 
 class OrderDetails extends Component {
   state = {
@@ -20,7 +21,7 @@ class OrderDetails extends Component {
     return (
       <Container>
         <Header transparent>
-          <Text>Date: {order.date}</Text>
+          <Text style={styles.authTitle}>Order Date: {order.date}</Text>
         </Header>
         <Content>{items}</Content>
       </Container>

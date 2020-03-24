@@ -8,13 +8,15 @@ import {
   Text,
   Header,
   Card,
-  Content
+  Content,
+  Image
 } from "native-base";
 import authStore from "../../stores/authStore";
 import profileStore from "../../stores/profileStore";
 import { observer } from "mobx-react";
 import LogoutButton from "../Buttons/LogoutButton";
 import OrderCard from "./OrderCard";
+import styles from "./styles";
 
 class Profile extends Component {
   componentDidMount() {
@@ -28,23 +30,27 @@ class Profile extends Component {
     return (
       <Container>
         <Header transparent>
-          <Text>{profileStore.profile.username}'s Profile</Text>
+          <Text style={styles.username}>
+            {profileStore.profile.username}'s Profile
+          </Text>
         </Header>
         <Content>
           <Card>
             <CardItem>
-              <Text>
+              <Text style={styles.subusername}>
                 Name: {profileStore.profile.first_name}{" "}
                 {profileStore.profile.last_name}
               </Text>
             </CardItem>
             <CardItem>
-              <Text>Email: {profileStore.profile.email}</Text>
+              <Text style={styles.subusername}>
+                Email: {profileStore.profile.email}
+              </Text>
             </CardItem>
           </Card>
         </Content>
         <Header transparent>
-          <Text>Order History</Text>
+          <Text style={styles.username}>Order History</Text>
         </Header>
         <Content>{orders}</Content>
         <LogoutButton />

@@ -3,6 +3,7 @@ import React from "react";
 // NativeBase Components
 import { Card, CardItem, Text } from "native-base";
 import { withNavigation } from "react-navigation";
+import styles from "./styles";
 
 const OrderCard = ({ past_item, navigation }) => {
   const handleDetail = () =>
@@ -10,7 +11,7 @@ const OrderCard = ({ past_item, navigation }) => {
   return (
     <Card>
       <CardItem header button onPress={handleDetail}>
-        <Text>Date: {past_item.date}</Text>
+        <Text style={styles.profiletext}>Date: {past_item.date}</Text>
       </CardItem>
     </Card>
   );
