@@ -1,13 +1,23 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-  addButton: {
-    alignSelf: "center",
-    backgroundColor: "rgb(20,90,100)",
-    width: 150
+  authContainer: {
+    backgroundColor: "mistyrose"
+  },
+  authButton: {
+    alignSelf: "stretch",
+    alignItems: "center",
+    padding: 20,
+    backgroundColor: "maroon",
+    marginTop: 30
+  },
+  authButtonText: {
+    color: "mistyrose",
+    fontWeight: "bold",
+    fontSize: 18
   },
   card: {
-    marginTop: 100
+    backgroundColor: "mistyrose"
   },
   listStyle: {
     borderBottomWidth: 0
@@ -16,20 +26,29 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   text: {
-    color: "black",
+    color: "maroon",
     fontSize: 15,
     marginLeft: 16,
 
     justifyContent: "center",
     alignItems: "center"
   },
+  newText: {
+    color: "maroon",
+    fontSize: 18,
+    fontWeight: "bold",
+    marginLeft: 16,
+
+    justifyContent: "center",
+    alignItems: "center"
+  },
   divider: {
-    borderBottomColor: "black",
+    borderBottomColor: "maroon",
     borderBottomWidth: 1
   },
   top: {
     marginLeft: 0,
-    backgroundColor: "#ffffcc"
+    backgroundColor: "maroon"
   },
   middleText: {
     color: "white",

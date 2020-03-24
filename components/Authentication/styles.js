@@ -5,11 +5,11 @@ const styles = StyleSheet.create({
     alignSelf: "stretch",
     alignItems: "center",
     padding: 20,
-    backgroundColor: "mistyrose",
+    backgroundColor: "maroon",
     marginTop: 30
   },
   authButtonText: {
-    color: "maroon",
+    color: "mistyrose",
     fontWeight: "bold",
     fontSize: 18
   },
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     alignSelf: "stretch",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#FCFDFF",
+    backgroundColor: "mistyrose",
     paddingRight: 60,
     paddingLeft: 60
   },

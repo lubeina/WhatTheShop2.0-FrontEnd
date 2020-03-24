@@ -1,7 +1,19 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
+  authContainer: {
+    backgroundColor: "mistyrose"
+  },
+  authButton: {
+    alignItems: "center",
+    width: 60,
+    backgroundColor: "transparent",
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: "#fff"
+  },
   text: {
+    alignItems: "center",
     color: "white",
     fontSize: 18,
     fontWeight: "bold",

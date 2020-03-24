@@ -1,9 +1,12 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
+  authContainer: {
+    backgroundColor: "mistyrose"
+  },
   addButton: {
     alignSelf: "center",
-    backgroundColor: "rgb(20,90,100)",
+    backgroundColor: "maroon",
     width: 150
   },
   card: {
@@ -13,7 +16,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0
   },
   numericInput: {
-    alignItems: "center"
+    alignItems: "center",
+    color: "mistyrose"
   },
   text: {
     color: "black",

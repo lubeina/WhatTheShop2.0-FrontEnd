@@ -14,13 +14,7 @@ const styles = StyleSheet.create({
     fontSize: 18
   },
   authContainer: {
-    flex: 1,
-    alignSelf: "stretch",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#FCFDFF",
-    paddingRight: 60,
-    paddingLeft: 60
+    backgroundColor: "mistyrose"
   },
   authOther: {
     color: "maroon",
