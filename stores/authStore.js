@@ -3,6 +3,7 @@ import { AsyncStorage } from "react-native";
 import jwt_decode from "jwt-decode";
 import { instance } from "./instance";
 import cartStore from "./cartStore";
+import { Alert } from "react-native";
 
 class AuthStore {
   user = null;
@@ -42,6 +43,16 @@ class AuthStore {
       navigation.navigate("List");
     } catch (err) {
       console.log("something went wrong logging in", userData);
+      Alert.alert("User not found", "Incorrect Username/Password.", [
+        {
+          text: "Try Again!",
+          onPress: () => navigation.navigate("Login")
+        },
+        {
+          text: "Register",
+          onPress: () => navigation.navigate("Register")
+        }
+      ]);
     }
   };
 
