@@ -1,6 +1,6 @@
 import React from "react";
 import { withNavigation } from "react-navigation";
-import { ImageBackground, View } from "react-native";
+import { ImageBackground, View, Alert } from "react-native";
 
 // NativeBase Components
 import {
