@@ -16,6 +16,7 @@ import {
 
 import cartStore from "../../stores/cartStore";
 import CheckoutItem from "./CheckoutItem";
+import styles from "./styles";
 
 class Checkout extends Component {
   render() {
@@ -24,17 +25,22 @@ class Checkout extends Component {
       <CheckoutItem item={checkout_item} key={checkout_item.id} />
     ));
     return (
-      <Container>
+      <Container style={styles.authContainer}>
         <Content>
-          <Card>
-            {checkoutList}
-            <Right>
-              <Text>Total Amount : KD {cartStore.price}.000 </Text>
-            </Right>
-            <Button dark onPress={() => this.props.navigation.navigate("List")}>
-              <Text>Thank you for shopping with us!</Text>
-            </Button>
-          </Card>
+          {checkoutList}
+          <Right>
+            <Text style={styles.newText}>
+              Total Amount : KD {cartStore.price}.000{" "}
+            </Text>
+          </Right>
+          <Button
+            style={styles.authButton}
+            onPress={() => this.props.navigation.navigate("List")}
+          >
+            <Text style={styles.authButtonText}>
+              Thank you for shopping with us!
+            </Text>
+          </Button>
         </Content>
       </Container>
     );

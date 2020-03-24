@@ -19,7 +19,7 @@ class OrderDetails extends Component {
       <OrderItem item={item} key={item.cake} />
     ));
     return (
-      <Container>
+      <Container style={styles.authContainer}>
         <Header transparent>
           <Text style={styles.authTitle}>Order Date: {order.date}</Text>
         </Header>

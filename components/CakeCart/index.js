@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { observer } from "mobx-react";
 
 // NativeBase Components
-import { Text, List, Button, Spinner } from "native-base";
+import { Text, List, Button, Spinner, Container, View } from "native-base";
 
 // Component
 import CartItem from "./CartItem";
@@ -11,6 +11,7 @@ import CartItem from "./CartItem";
 import cartStore from "../../stores/cartStore";
 import authStore from "../../stores/authStore";
 import { render } from "react-dom";
+import styles from "./styles";
 
 class CakeCart extends Component {
   render() {
@@ -19,16 +20,17 @@ class CakeCart extends Component {
       <CartItem item={item} key={item.id} />
     ));
     return (
-      <List>
-        {cartItems}
-        <Button
-          full
-          danger
-          onPress={() => cartStore.checkoutCart(this.props.navigation)}
-        >
-          <Text>Checkout</Text>
-        </Button>
-      </List>
+      <Container style={styles.authContainer}>
+        <List>
+          {cartItems}
+          <Button
+            style={styles.authButton}
+            onPress={() => cartStore.checkoutCart(this.props.navigation)}
+          >
+            <Text style={styles.authButtonText}>Checkout</Text>
+          </Button>
+        </List>
+      </Container>
     );
   }
 }

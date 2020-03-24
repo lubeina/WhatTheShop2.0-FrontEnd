@@ -2,18 +2,19 @@ import React from "react";
 
 // NativeBase Components
 import { Card, CardItem, Text } from "native-base";
+import styles from "./styles";
 
 const CheckoutItem = ({ item }) => {
   return (
-    <Card>
-      <CardItem>
-        <Text>Cake: {item.cake}</Text>
+    <Card style={styles.card}>
+      <CardItem style={styles.card}>
+        <Text style={styles.text}>Cake: {item.cake}</Text>
       </CardItem>
-      <CardItem>
-        <Text>Quantity: {item.quantity}</Text>
+      <CardItem style={styles.card}>
+        <Text style={styles.text}>Quantity: {item.quantity}</Text>
       </CardItem>
-      <CardItem>
-        <Text>Price: KD {item.item_price}.000</Text>
+      <CardItem style={styles.card}>
+        <Text style={styles.text}>Price: KD {item.item_price}.000</Text>
       </CardItem>
     </Card>
   );

@@ -8,9 +8,9 @@ import {
   Text,
   Header,
   Card,
-  Content,
-  Image
+  Content
 } from "native-base";
+import { Image } from "react-native";
 import authStore from "../../stores/authStore";
 import profileStore from "../../stores/profileStore";
 import { observer } from "mobx-react";
@@ -28,31 +28,37 @@ class Profile extends Component {
       .map(past_item => <OrderCard past_item={past_item} key={past_item.id} />)
       .reverse();
     return (
-      <Container>
-        <Header transparent>
-          <Text style={styles.username}>
-            {profileStore.profile.username}'s Profile
-          </Text>
-        </Header>
+      <Container style={styles.authContainer}>
         <Content>
-          <Card>
-            <CardItem>
-              <Text style={styles.subusername}>
-                Name: {profileStore.profile.first_name}{" "}
-                {profileStore.profile.last_name}
-              </Text>
-            </CardItem>
-            <CardItem>
-              <Text style={styles.subusername}>
-                Email: {profileStore.profile.email}
-              </Text>
-            </CardItem>
-          </Card>
+          <Header transparent>
+            <Image
+              style={{ width: 150, height: 150 }}
+              source={require("../../assets/the_sweet_shop_2.png")}
+            ></Image>
+          </Header>
         </Content>
-        <Header transparent>
-          <Text style={styles.username}>Order History</Text>
-        </Header>
-        <Content>{orders}</Content>
+        <Text style={styles.username}>
+          {profileStore.profile.username}'s Profile
+        </Text>
+        <Card>
+          <CardItem>
+            <Text style={styles.subusername}>
+              Name: {profileStore.profile.first_name}{" "}
+              {profileStore.profile.last_name}
+            </Text>
+          </CardItem>
+          <CardItem>
+            <Text style={styles.subusername}>
+              Email: {profileStore.profile.email}
+            </Text>
+          </CardItem>
+        </Card>
+        <Content>
+          <Header transparent>
+            <Text style={styles.username}>Order History</Text>
+          </Header>
+          {orders}
+        </Content>
         <LogoutButton />
       </Container>
     );

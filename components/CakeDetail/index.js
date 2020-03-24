@@ -61,13 +61,13 @@ class CakeDetail extends Component {
     );
     if (cakeStore.loading) return <Spinner />;
     return (
-      <Container>
+      <Container style={styles.authContainer}>
         <Content>
-          <Card style={{ flex: 0 }}>
-            <CardItem>
+          <Card style={{ flex: 0, backgroundColor: "mistyrose" }}>
+            <CardItem style={{ backgroundColor: "mistyrose" }}>
               <Left>
                 <Thumbnail bordered source={{ uri: cakeshop.image }} />
-                <Body>
+                <Body style={{ backgroundColor: "mistyrose" }}>
                   <Text style={styles.text}>
                     {cakeshop.name + "\n"}
                     <Text style={styles.text}>{cakeshop.size + "\n"}</Text>
@@ -77,21 +77,28 @@ class CakeDetail extends Component {
               </Left>
               <Body />
             </CardItem>
-            <CardItem>
-              <Body>
+            <CardItem style={{ backgroundColor: "mistyrose" }}>
+              <Body style={{ backgroundColor: "mistyrose" }}>
                 <Image
                   source={{ uri: cakeshop.image }}
                   style={{ height: 300, width: 380, flex: 1 }}
                 />
               </Body>
             </CardItem>
-            <CardItem>
+            <CardItem style={{ backgroundColor: "mistyrose" }}>
               <Left>
-                <Body style={styles.numericInput}>
+                <Body
+                  style={
+                    (styles.numericInput, { backgroundColor: "mistyrose" })
+                  }
+                >
                   <NumericInput
                     value={this.state.value}
                     onChange={this.changeQuantity}
                     initValue={1}
+                    style={{ backgroundColor: "mistyrose" }}
+                    rightButtonBackgroundColor="mistyrose"
+                    leftButtonBackgroundColor="mistyrose"
                   />
                 </Body>
                 <Button full style={styles.addButton} onPress={this.handleAdd}>
