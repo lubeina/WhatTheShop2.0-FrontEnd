@@ -5,7 +5,6 @@ import { Card, CardItem, Text } from "native-base";
 import styles from "./styles";
 
 const OrderItem = ({ item }) => {
-  const total = item.quantity * item.item_price;
   return (
     <Card>
       <CardItem>
@@ -16,9 +15,6 @@ const OrderItem = ({ item }) => {
       </CardItem>
       <CardItem>
         <Text style={styles.profiletext}>Price: KD {item.item_price}.000</Text>
-      </CardItem>
-      <CardItem>
-        <Text style={styles.profiletext}>Total: KD {total}.000</Text>
       </CardItem>
     </Card>
   );
