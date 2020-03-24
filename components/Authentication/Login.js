@@ -3,7 +3,7 @@ import { observer } from "mobx-react";
 import styles from "./styles";
 
 // NativeBase Components
-import { TextInput, TouchableOpacity, View } from "react-native";
+import { TextInput, TouchableOpacity, View, Image } from "react-native";
 import { Spinner } from "native-base";
 
 import { Text } from "native-base";
@@ -30,6 +30,10 @@ class Login extends Component {
     if (authStore.loading) return <Spinner />;
     return (
       <View style={styles.authContainer}>
+        <Image
+          style={{ width: 150, height: 150 }}
+          source={require("../../assets/the_sweet_shop_2.png")}
+        ></Image>
         <Text style={styles.authTitle}>Login</Text>
         <TextInput
           style={styles.authTextInput}

@@ -43,7 +43,7 @@ class Register extends Component {
         />
         <TextInput
           style={styles.authTextInput}
-          placeholder="email"
+          placeholder="Email"
           placeholderTextColor="#A6AEC1"
           onChangeText={value => this.setState({ email: value })}
         />
