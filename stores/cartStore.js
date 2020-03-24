@@ -4,6 +4,7 @@ import { instance } from "./instance";
 class CartStore {
   items = [];
   loading = true;
+  checkout_items = [];
 
   fetchAllCartItems = async () => {
     try {
@@ -25,7 +26,7 @@ class CartStore {
           quantity: itemExist.quantity
         });
       } catch (err) {
-        console.log("something went wrong");
+        console.log("something went wrong while adding item in cart");
       }
       itemExist.item_price = itemExist.quantity * price;
     } else {
@@ -38,14 +39,24 @@ class CartStore {
     try {
       await instance.delete(`cart/${item.id}/delete/`);
     } catch (err) {
-      console.log("something went wrong");
+      console.log("something went wrong while removing from cart");
     }
     this.items = this.items.filter(_item => _item !== item);
   };
 
-  checkoutCart = () => {
+  checkoutCart = async navigation => {
+    this.loading = true;
     this.items = [];
-    alert("Thank you for Shopping with us!");
+    this.checkout_items = [];
+    try {
+      const res = await instance.get("checkout/");
+      const checkout_item = res.data.cart_item;
+      this.checkout_items = checkout_item;
+      this.loading = false;
+    } catch (err) {
+      console.log("something went wrong while checkout");
+    }
+    navigation.navigate("Checkout");
   };
 
   get quantity() {
@@ -53,13 +64,21 @@ class CartStore {
     this.items.forEach(item => (quantity += item.quantity));
     return quantity;
   }
+
+  get price() {
+    let price = 0;
+    this.checkout_items.forEach(item => (price += item.item_price));
+    return price;
+  }
 }
 
 decorate(CartStore, {
   items: observable,
   cart: observable,
   loading: observable,
-  quantity: computed
+  checkout_items: observable,
+  quantity: computed,
+  price: computed
 });
 
 const cartStore = new CartStore();

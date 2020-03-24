@@ -70,6 +70,7 @@ class CakeDetail extends Component {
                 <Body>
                   <Text style={styles.text}>
                     {cakeshop.name + "\n"}
+                    <Text style={styles.text}>{cakeshop.size + "\n"}</Text>
                     <Text note>{cakeshop.flavor}</Text>
                   </Text>
                 </Body>

@@ -21,7 +21,11 @@ class CakeCart extends Component {
     return (
       <List>
         {cartItems}
-        <Button full danger onPress={cartStore.checkoutCart}>
+        <Button
+          full
+          danger
+          onPress={() => cartStore.checkoutCart(this.props.navigation)}
+        >
           <Text>Checkout</Text>
         </Button>
       </List>
